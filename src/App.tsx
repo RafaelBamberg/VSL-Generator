@@ -23,10 +23,10 @@ function App() {
       let slide = pptx.addSlide();
 
       slide.addText(element, {
-        x: 0.5,
-        y: 3.5,
-        w: 1,
-        h: 2,
+        x: 4,
+        y: 3,
+        w: 9,
+        h: 3,
         align: 'center',
         color: "363636",
         fill: {
