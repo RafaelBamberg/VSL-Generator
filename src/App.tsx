@@ -18,13 +18,15 @@ function App() {
     const format = message.split('\n')
 
     format.forEach(element => {
+      pptx.defineLayout({ name:'A3', width: 16, height: 9 });
+      pptx.layout = 'A3'
       let slide = pptx.addSlide();
 
       slide.addText(element, {
         x: 0.5,
-        y: 1.2,
-        w: 9,
-        h: 3,
+        y: 3.5,
+        w: 1,
+        h: 2,
         align: 'center',
         color: "363636",
         fill: {
