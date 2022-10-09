@@ -10,7 +10,6 @@ function App() {
   const handleMessageChange = event => {
     // 👇️ access textarea value
     setMessage(event.target.value);
-    console.log(event.target.value);
   };
 
   const generate = () => {
@@ -22,10 +21,15 @@ function App() {
       let slide = pptx.addSlide();
 
       slide.addText(element, {
-        x: 3,
+        x: 1.8,
         y: 3,
+        align: 'center',
         color: "363636",
-        fill: { color: "F1F1F1" },
+        fill: { 
+          color: "F1F1F1",
+          transparency: 0,
+       },
+       shape: 'cloud'
     });
     })
 
