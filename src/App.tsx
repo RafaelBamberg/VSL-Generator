@@ -21,13 +21,16 @@ function App() {
       let slide = pptx.addSlide();
 
       slide.addText(element, {
-        x: 1.8,
-        y: 3,
+        x: 0.5,
+        y: 1.2,
+        w: 9,
+        h: 3,
         align: 'center',
         color: "363636",
-        fill: { 
-          color: "F1F1F1",
-          transparency: 0,
+        fill: {
+          type: 'solid', 
+          color: "#FFFFFF",
+          transparency: 100,
        },
        shape: 'cloud'
     });
