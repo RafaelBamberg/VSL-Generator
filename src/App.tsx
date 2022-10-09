@@ -16,9 +16,18 @@ function App() {
   const generate = () => {
     let pptx = new pptxgen()
 
-    let slide = pptx.addSlide();
-    slide.addText(message)
+    const format = message.split('\n')
 
+    format.forEach(element => {
+      let slide = pptx.addSlide();
+
+      slide.addText(element, {
+        x: 3,
+        y: 3,
+        color: "363636",
+        fill: { color: "F1F1F1" },
+    });
+    })
 
     pptx.writeFile()
 }
@@ -28,12 +37,14 @@ function App() {
             <img src={image} alt='imagem' />
       </div>
     <div className="area-texto">
-        <textarea value={message} onChange={handleMessageChange} rows={30} cols={150} />
+        <textarea onChange={handleMessageChange} rows={30} cols={150}>
+          {`${message}`}
+        </textarea>
     </div>
     <div className="area-buttons">
         <button onClick={generate}>Gerar VSL</button> 
     </div>
-    <footer className="footter-content">Crisgay.inc@2022</footer>
+    <footer className="footter-content">Gerador de VSL@2022</footer>
     </div>
   );
 }
