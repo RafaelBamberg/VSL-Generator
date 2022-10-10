@@ -6,10 +6,30 @@ import React, { useState } from 'react';
 function App() {
 
   const [message, setMessage] = useState('');
+  const [color, setColor] = useState('');
+  const [backGroundColor, setBackGroundColor] = useState('');
+  const [fontSize, setFontSize] = useState(0);
+  const [fontName, setFontName] = useState('');
 
   const handleMessageChange = event => {
-    // 👇️ access textarea value
     setMessage(event.target.value);
+  };
+
+  const handleColorChange = event => {
+    setColor(event.target.value);
+  };
+  
+  const handleBackGroundChange = event => {
+    setBackGroundColor(event.target.value);
+  };
+
+  const handleFontSize = event => {
+    setFontSize(event.target.value);
+  };
+
+  const handleFontName = event => {
+    setFontName(event.target.value);
+    console.log(fontName)
   };
 
   const generate = () => {
@@ -25,7 +45,7 @@ function App() {
       pptx.layout = 'A3'
       let slide = pptx.addSlide();
 
-      slide.background = { color: "#ffffff" }; // cor do fundo do slide
+      slide.background = { color: backGroundColor }; // cor do fundo do slide
       
       // separar igual ao phyton, uma config para a caixa e outra para o texto, tenta criar a caixa e dps add o texto
       
@@ -35,10 +55,10 @@ function App() {
       y: 4, // de cima pra baixo
       w: "80%",
     h: 1,
-    fontSize: 36,
+    fontSize: fontSize,
     align: "center",
-    color: "#000000",
-    fontFace:'Open Sans' 
+    color: color,
+    fontFace: fontName 
   });
     })
 
@@ -50,12 +70,30 @@ function App() {
             <img src={image} alt='imagem' />
       </div>
     <div className="area-texto">
-        <textarea onChange={handleMessageChange} rows={30} cols={150}>
+        <textarea 
+        onChange={handleMessageChange} 
+        placeholder={`Quebre sua copy em linhas (Não deixe linhas brancas), cada linha vai ser um slide, simples assim :D !`} 
+        rows={17} 
+        cols={100}>
           {`${message}`}
         </textarea>
     </div>
+    <div>
     <div className="area-buttons">
-        <button onClick={generate}>Gerar VSL</button> 
+        <span className='span-text'>Cor do texto:</span>
+        <input type="color" id="favcolor" name="favcolor" onChange={handleColorChange} value={color} />
+        <span className='span-text'>Cor do slide:</span>
+        <input type="color" id="favcolor" name="favcolor" onChange={handleBackGroundChange} value={backGroundColor} />
+        <span className='span-text'>Tamanho da fonte:</span>
+        <input  type="number" min="1" max="100" onChange={handleFontSize} value={fontSize} />
+        <span className='span-text'>Fonte(Arial, Open Sans e etc):</span>
+        <input  type="text" onChange={handleFontName} value={fontName} />
+
+    </div>
+
+    <div className='generation-button'>
+      <button onClick={generate}>Gerar VSL</button> 
+      </div>
     </div>
     <footer className="footter-content">Gerador de VSL @Copyright 2022</footer>
     </div>

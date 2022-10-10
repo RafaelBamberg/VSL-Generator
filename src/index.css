@@ -25,5 +25,16 @@
      display: flex;
      justify-content: center;
      position: bottom;
-     margin-top: 140px
+     margin-top: 160px
  }
+
+ .generation-button {
+    display: flex;
+    flex-direction: center;
+    margin-top: 100px;
+    margin-left: 48%;
+   }
+
+   .span-text {
+    padding: 5px;
+   }
