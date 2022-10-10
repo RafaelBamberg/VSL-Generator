@@ -66,6 +66,7 @@ function App() {
 }
   return (
     <div>
+      <title>Teste</title>
         <div className="img-fluid">
             <img src={image} alt='imagem' />
       </div>
