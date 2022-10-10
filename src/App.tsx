@@ -15,27 +15,31 @@ function App() {
   const generate = () => {
     let pptx = new pptxgen()
 
+
     const format = message.split('\n')
+
+// escolher outros tamanhos 9:16 e 4:3 (muito provavel que tenha que configurar outras variaveis de x,y,w e h)
 
     format.forEach(element => {
       pptx.defineLayout({ name:'A3', width: 16, height: 9 });
       pptx.layout = 'A3'
       let slide = pptx.addSlide();
 
-      slide.addText(element, {
-        x: 4,
-        y: 3,
-        w: 9,
-        h: 3,
-        align: 'center',
-        color: "363636",
-        fill: {
-          type: 'solid', 
-          color: "#FFFFFF",
-          transparency: 100,
-       },
-       shape: 'cloud'
-    });
+      slide.background = { color: "#ffffff" }; // cor do fundo do slide
+      
+      // separar igual ao phyton, uma config para a caixa e outra para o texto, tenta criar a caixa e dps add o texto
+      
+     
+  slide.addText(element,
+    { x: 1.6, // esquerda para direite
+      y: 4, // de cima pra baixo
+      w: "80%",
+    h: 1,
+    fontSize: 36,
+    align: "center",
+    color: "#000000",
+    fontFace:'Open Sans' 
+  });
     })
 
     pptx.writeFile()
@@ -53,7 +57,7 @@ function App() {
     <div className="area-buttons">
         <button onClick={generate}>Gerar VSL</button> 
     </div>
-    <footer className="footter-content">Gerador de VSL@2022</footer>
+    <footer className="footter-content">Gerador de VSL @Copyright 2022</footer>
     </div>
   );
 }
