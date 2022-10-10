@@ -29,7 +29,6 @@ function App() {
 
   const handleFontName = event => {
     setFontName(event.target.value);
-    console.log(fontName)
   };
 
   const generate = () => {
